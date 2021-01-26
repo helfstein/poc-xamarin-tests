@@ -19,6 +19,7 @@ namespace AllTests.Configs {
         public static string ApiBaseUrl => "https://gateway.marvel.com/v1/public";
         public long Ts { get; private set; }
 
+        // get a key on https://developer.marvel.com
         public string ApiPublicKey => "<Your Key here>";
 
         private static string ApiSecretKey => "<Your Key here>";
