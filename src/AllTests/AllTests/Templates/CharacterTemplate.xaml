@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:AllTests.Models"
+             x:DataType="models:Character"
+             x:Class="AllTests.Templates.CharacterTemplate"
+             HorizontalOptions="FillAndExpand"
+             Padding="3"
+             VerticalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="130"/>
+    </Grid.RowDefinitions>
+
+
+
+    <Frame Grid.Row="0"
+           Grid.Column="0" 
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand"
+           CornerRadius="5"
+           BackgroundColor="White"/>
+
+    <StackLayout Orientation="Horizontal"
+                 Grid.Row="0"          
+                 Grid.Column="0" 
+                 Padding="3"          
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+        
+        <Image AutomationId="CharacterImg"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand"
+               WidthRequest="110"
+               HeightRequest="110"
+               Source="{Binding Thumbnail.StandardMedium}">
+             
+        </Image>
+        <StackLayout Grid.Row="0"
+                     Grid.Column="1"
+                     Spacing="2"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="StartAndExpand">
+            <Label AutomationId="CharacterNameLbl"
+               
+               HorizontalOptions="Start"
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Nome"/>
+            <Label AutomationId="CharacterNameValueLbl"
+                TextColor="Black"
+               Text="{Binding Name}"/>
+
+            <Label AutomationId="CharacterModifiedAtLbl"
+               
+               HorizontalOptions="Start"
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Modificado em"/>
+            <Label AutomationId="CharacterModifiedAtValueLbl"
+                TextColor="Black"
+               Text="{Binding ModifiedAt, StringFormat='{0:dd/MM/yyyy}'}"/>
+
+            <Label AutomationId="CharacterDescriptionLbl"
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Descrição"/>
+            <Label AutomationId="CharacterDescriptionValueLbl"
+                TextColor="Black"
+                LineBreakMode="TailTruncation"
+                Text="{Binding Description}"/>
+        </StackLayout>
+        
+
+    </StackLayout>
+    
+    
+
+
+
+</Grid>
+

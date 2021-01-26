@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AllTests.PageModels"
+             xmlns:fonts="clr-namespace:AllTests.Fonts"
+             x:Class="AllTests.Pages.CharacterDetailPage"
+             Title="{Binding Character.Name}">
+    <ContentPage.BindingContext>
+        <vm:CharacterDetailPageModel/>
+    </ContentPage.BindingContext>
+    <Grid HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="20">
+            <Image HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Start"
+               WidthRequest="270"
+               HeightRequest="200"
+               Source="{Binding Character.Thumbnail.LandscapeXLarge}">
+
+            </Image>
+            <Label 
+               
+               HorizontalOptions="Start"
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Nome"/>
+            <Label 
+                TextColor="Black"
+               Text="{Binding Character.Name}"/>
+
+            <Label 
+               
+               HorizontalOptions="Start"
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Modificado em"/>
+            <Label 
+                TextColor="Black"
+               Text="{Binding Character.ModifiedAt, StringFormat='{0:dd/MM/yyyy}'}"/>
+
+            <Label 
+               FontAttributes="Bold"
+                TextColor="Black"
+               Text="Descrição"/>
+            <Label 
+                TextColor="Black"
+               Text="{Binding Character.Description}"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="0"
+                     Grid.Column="0"
+                     IsVisible="{Binding IsBusy}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <Image x:Name="loading"                  
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   WidthRequest="35"
+                   HeightRequest="35"                   
+                   AutomationId="LoadingImg">
+
+                <Image.Source>
+                    <FontImageSource FontFamily="FABold" Size="35" Color="Black" Glyph="{x:Static fonts:Icon.Spider}"/>
+                </Image.Source>
+            </Image>
+            
+
+        </StackLayout>
+    </Grid>
+        
+</ContentPage>

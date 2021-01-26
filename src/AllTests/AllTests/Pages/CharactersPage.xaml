@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AllTests.PageModels"
+             x:DataType="vm:CharactersPageModel"
+             xmlns:fonts="clr-namespace:AllTests.Fonts"
+             xmlns:models="clr-namespace:AllTests.Models"
+             xmlns:templates="clr-namespace:AllTests.Templates"
+             Title="Characters"
+             x:Class="AllTests.Pages.CharactersPage"
+             AutomationId="CharactersPage"
+             BackgroundColor="LightGray">
+
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        
+
+        <RefreshView Grid.Row="0"
+                     Grid.Column="0"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <ScrollView AutomationId="CharactersLst" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+
+                <CollectionView HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                ItemsSource="{Binding Characters}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:CharacterTemplate AutomationId="CharacterRowTpl" BindingContext="{Binding .}">
+                                <templates:CharacterTemplate.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectedItemCommand, Source={RelativeSource AncestorType={x:Type vm:CharactersPageModel}}}" 
+                                                          CommandParameter="{Binding ., Source={RelativeSource AncestorType={x:Type models:Character}}}"/>
+                                </templates:CharacterTemplate.GestureRecognizers>
+                            </templates:CharacterTemplate>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <StackLayout IsVisible="{Binding IsLoadMoreAvaliable}" 
+                                 Padding="5"
+                                 HorizontalOptions="FillAndExpand">
+                            <Button AutomationId="LoadMoreBtn" Text="Load More" 
+                                HorizontalOptions="Center"
+                                Command="{Binding LoadMoreCommand}"/>
+                        </StackLayout>
+                    </CollectionView.Footer>
+                </CollectionView>
+            </ScrollView>
+        </RefreshView>
+
+
+        <StackLayout Grid.Row="0"
+                     Grid.Column="0"
+                      IsVisible="{Binding IsBusy}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <Image x:Name="loading"
+                  
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   WidthRequest="35"
+                   HeightRequest="35"                   
+                   AutomationId="LoadingImg">
+
+                <Image.Source>
+                    <FontImageSource FontFamily="FABold" Size="35" Color="Black" Glyph="{x:Static fonts:Icon.Spider}"/>
+                </Image.Source>
+            </Image>
+        </StackLayout>
+
+
+    </Grid>
+    
+</ContentPage>
