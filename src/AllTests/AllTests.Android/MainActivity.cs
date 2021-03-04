@@ -13,6 +13,7 @@ namespace AllTests.Droid {
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

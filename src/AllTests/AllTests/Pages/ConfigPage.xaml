@@ -22,11 +22,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <WebView HeightRequest="200" BackgroundColor="Red"  HorizontalOptions="FillAndExpand" Source="https://www.google.com.br/"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image AutomationId="AppLoboImg" Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    <Image AutomationId="AppLoboImg" Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />                    
+
                 </ContentView>
+                
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
